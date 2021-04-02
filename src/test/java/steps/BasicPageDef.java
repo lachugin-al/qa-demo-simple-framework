@@ -16,7 +16,7 @@ public class BasicPageDef {
         basicPage.clickButton(arg0);
     }
 
-    @Then("Контент с фразой {string} отображается")
+    @Then("Контент содержащий фразу {string} отображается")
     public void contentIsVisible(String arg0) {
         basicPage.contentIsVisible(arg0);
     }
