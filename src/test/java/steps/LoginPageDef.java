@@ -2,7 +2,6 @@ package steps;
 
 import config.UserConfig;
 import impl.AuthServiceImpl;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
 import models.api.User;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -101,5 +100,11 @@ public class LoginPageDef {
         User user = get("newUser", User.class);
         User userLogged = authService.login(user);
         Assert.assertNotNull(userLogged);
+        Assert.assertEquals(user.getEmail().toLowerCase(), userLogged.getEmail().toLowerCase());
+
+        // to console
+        String a = user.getEmail().toLowerCase();
+        String b = userLogged.getEmail().toLowerCase();
+        System.out.printf("%s, %s",a ,b);
     }
 }
