@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+// Versioning of dependencies
+wrapper.gradleVersion = '5.5.1'
+def cucumberVersion = '6.10.2'
+def junitVersion = '5.7.1'
+def selenideVersion = '5.20.1'
+
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:${junitVersion}"
+    compile "com.codeborne:selenide:${selenideVersion}"
+
+    compileOnly 'org.projectlombok:lombok:1.18.18'
+    annotationProcessor 'org.projectlombok:lombok:1.18.18'
+    compile 'io.rest-assured:rest-assured:4.3.3'
+}
+
+test {
+    useJUnitPlatform()
+}

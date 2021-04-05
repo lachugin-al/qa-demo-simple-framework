@@ -1,7 +1,11 @@
 package steps;
 
+import config.EnvConfig;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.BasicPage;
+
+import static com.codeborne.selenide.Selenide.open;
 
 public class BasicPageDef {
     BasicPage basicPage = new BasicPage();
@@ -21,4 +25,8 @@ public class BasicPageDef {
         basicPage.contentIsVisible(arg0);
     }
 
+    @Given("Открываем страницу {string}")
+    public void openPage(String arg0) {
+        open(EnvConfig.URI_LOGIN + arg0);
+    }
 }
